@@ -8,25 +8,79 @@
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css">
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+        <link rel="stylesheet" href="style.css">
+        
+
     <title>Pagina 1</title>
 </head>
 <body>
-    <a class="navbar-brand" href="indx.html">Inicio</a>
-        <nav class="navbar navbar-inverse navbar-stcik-static-top">
-            <a class="navbar-navbar" href="index.html">Inicio</a>
-            <ul class="nav nabar-nav">
-                <li>
-                    <a href="menu.html">Menu</a>
-                </li>
-                <li>
-                    <a href="pedido.html">Pedido</a>
-                </li>
-                <li>
-                    <a href="contacto.html">Contacto</a>
-                </li>
+    <div style="margin: 24px;">
+        <nav class="navbar navbar-inverse navbar-stick-static-top">
+            <div class="container">
+                <a class="navbar-navbar" href="index.html">Inicio</a>
+                <ul class="nav navbar-nav">
+                    <li>
+                        <a href="menu.html">Menu</a>
+                    </li>
+                    <li class="active">
+                        <a href="pedido.html">Pedido</a>
+                    </li>
+                    <li>
+                        <a href="contacto.html">Contacto</a>
+                    </li>
+                </ul>
             </div>
         </nav>
     </div>
-    <h1>Pedido</h1>
+    <titulo1>Pedido</titulo1>
+
+    <form id="pedido">
+    <p>Nombre:<input type="text" id="nombre" name="nombre" size="30"></p>
+    <p>Apellido: <input type="text" id="apellido"  name="apellido" size="30"></p>
+    <p>Telefono:<input type="text" id="telefono" name="telefono" size="30"></p>
+    <p>Direccion:<input type="text" id="direccion" name="direccion" size="30"></p>
+    <p>Colonia:<input type="text" id="colonia" name="colonia" size="30"></p>
+     <br>
+     <select name="menu">
+        <option value="hamburguesa">Hamburguesa</option>
+        <option value="papas a la francesa">Papas a la francesa</option>
+        <option value="hot dog">Hot dog</option>
+        <option value="Pizza con orilla de queso">Pizza con orilla de queso</option>
+        <option value="papas con queso y/o aderezo">Papas con queso y/o aderezo</option>
+        <option value="pizza con carne">Pizza con carne</option>
+        <option value="papas fritas">Papas fritas</option>
+        <option value="coca cola">Coca cola</option>
+        <option value="hot dog">Hot dog</option>
+        <option value="fanta">Fanta</option>
+        <option value="papa asada">Papa asada</option>
+        <option value="parrillada">Parrillada</option>
+
+        <titulo1>Verduras</titulo1> 
+     Vegetales:
+    <input type="checkbox" id="tomate" ><label for="tomate">Tomate</label>
+    <input type="checkbox" id="cebolla" ><label for="cebolla">Cebolla</label>
+    <input type="checkbox" id="lechuga" ><label for="lechuga">Lechuga</label>
+    <input type="checkbox" id="pepinos" ><label for="pepinos">Pepinos</label>
+  
+    <input type="submit" value="Enviar">
+    <input type="reset" value="Borrar">
+    
+    </form>
+    <script>
+        const form=document.getElementById("pedido");
+        form.addEventListener("submit",function (event){
+            event.preventDefault();
+            const formData=new FormData(form);
+            const orden={
+                nombre:formData.get("nombre"),
+                apellido:formData.get("apellido"),
+                telefono:formData.get("telefono"),
+                direccion:formData.get("direccion"),
+                colonia:formData.get("colonia"),
+            };
+            localStorage.setItem("orden",JSON.stringify(orden));
+            window.location.href="pedidorealizado.html";
+        });
+    </script>
 </body>
 </html>
